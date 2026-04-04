@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Plane, ArrowRight, Check } from "lucide-react";
+import { Plane } from "lucide-react";
 
 const FONT_HREF =
   "https://fonts.googleapis.com/css2?family=General+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap";
@@ -59,33 +59,6 @@ export default function Merci() {
     // TODO: TIKTOK PIXEL - Purchase Event
     // TODO: STRIPE PURCHASE CONVERSION
   }, []);
-
-  const steps = [
-    {
-      emoji: "💬",
-      num: "01",
-      title: "Rejoins la communauté",
-      desc: "Retrouve les autres voyageurs fondateurs sur Discord pour des tips, des alertes et du partage.",
-      action: { label: "Rejoindre le Discord", href: "#", bg: "#5865F2" },
-    },
-    {
-      emoji: "📱",
-      num: "02",
-      title: "Suis-nous sur les réseaux",
-      desc: "Deals en avant-première, coulisses de l'IA et témoignages de voyageurs.",
-      links: [
-        { label: "TikTok", href: "#" },
-        { label: "Instagram", href: "#" },
-      ],
-    },
-    {
-      emoji: "🚀",
-      num: "03",
-      title: "Accès bêta",
-      desc: "Tu recevras un email dès que la bêta sera prête. En tant que Fondateur, tu seras parmi les tout premiers.",
-      badge: "Bêta prévue T3 2026",
-    },
-  ];
 
   return (
     <div style={{ fontFamily: sans, background: T.bg, minHeight: "100vh", overflowX: "hidden" }}>
@@ -172,96 +145,29 @@ export default function Merci() {
             </div>
           </div>
 
-          {/* Steps */}
-          <div style={{ marginTop: 48, textAlign: "left" }}>
-            <p className="merci-fade" style={{
-              fontFamily: sans, fontSize: 11, fontWeight: 600, letterSpacing: ".1em",
-              color: T.coral, textTransform: "uppercase", textAlign: "center", marginBottom: 20,
-              animationDelay: ".25s",
+          {/* Info */}
+          <div className="merci-fade" style={{ marginTop: 40, animationDelay: ".3s" }}>
+            <div style={{
+              background: T.white, borderRadius: 18, padding: "32px 24px",
+              border: `1px solid ${T.border}`, textAlign: "center",
             }}>
-              Prochaines étapes
-            </p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              {steps.map((st, i) => (
-                <div key={i} className={`merci-card merci-fade`} style={{
-                  animationDelay: `${0.3 + i * 0.1}s`,
-                  background: T.white, borderRadius: 18, padding: "22px 20px",
-                  border: `1px solid ${T.border}`,
-                }}>
-                  <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                    <div style={{
-                      width: 44, height: 44, borderRadius: 12,
-                      background: T.coralLight,
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: 22, flexShrink: 0,
-                    }}>{st.emoji}</div>
-                    <div style={{ flex: 1 }}>
-                      <span style={{ fontFamily: sans, fontSize: 10, fontWeight: 600, letterSpacing: ".08em", color: T.coral, textTransform: "uppercase" }}>
-                        Étape {st.num}
-                      </span>
-                      <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: 15, color: T.text, margin: "4px 0 6px" }}>{st.title}</h3>
-                      <p style={{ fontFamily: sans, fontSize: 13.5, color: T.textMid, lineHeight: 1.6, marginBottom: st.action || st.links || st.badge ? 12 : 0 }}>{st.desc}</p>
-
-                      {st.action && (
-                        <a href={st.action.href} style={{
-                          display: "inline-flex", alignItems: "center", gap: 6,
-                          background: st.action.bg, color: "#fff",
-                          fontFamily: sans, fontWeight: 600, fontSize: 13,
-                          padding: "9px 18px", borderRadius: 10, textDecoration: "none",
-                        }}>
-                          {st.action.label}
-                        </a>
-                      )}
-
-                      {st.links && (
-                        <div style={{ display: "flex", gap: 8 }}>
-                          {st.links.map((lk, j) => (
-                            <a key={j} href={lk.href} style={{
-                              display: "inline-flex", alignItems: "center", gap: 4,
-                              background: T.text, color: "#fff",
-                              fontFamily: sans, fontWeight: 600, fontSize: 12,
-                              padding: "8px 14px", borderRadius: 8, textDecoration: "none",
-                            }}>{lk.label}</a>
-                          ))}
-                        </div>
-                      )}
-
-                      {st.badge && (
-                        <div style={{
-                          display: "inline-flex", alignItems: "center", gap: 6,
-                          background: T.mint, borderRadius: 8, padding: "6px 12px",
-                        }}>
-                          <div style={{ width: 7, height: 7, borderRadius: "50%", background: T.mintDark, animation: "blink 2s ease-in-out infinite" }} />
-                          <span style={{ fontFamily: sans, fontSize: 12, fontWeight: 600, color: T.mintDark }}>{st.badge}</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Share */}
-          <div className="merci-fade" style={{ marginTop: 44, animationDelay: ".65s" }}>
-            <p style={{ fontFamily: sans, fontSize: 13, color: T.textLight, marginBottom: 14 }}>
-              Partage la nouvelle avec tes amis voyageurs
-            </p>
-            <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
-              <a href="https://twitter.com/intent/tweet?text=Je%20viens%20de%20rejoindre%20Volora%20en%20tant%20que%20Fondateur%20%E2%9C%88%EF%B8%8F%20L%27IA%20qui%20d%C3%A9tecte%20les%20vols%20%C3%A0%20prix%20cass%C3%A9%20%F0%9F%94%A5" target="_blank" rel="noopener" className="merci-share" style={{
+              <div style={{ fontSize: 36, marginBottom: 12 }}>📩</div>
+              <h3 style={{ fontFamily: sans, fontWeight: 700, fontSize: 17, color: T.text, marginBottom: 8 }}>
+                On te tient au courant
+              </h3>
+              <p style={{ fontFamily: sans, fontSize: 14, color: T.textMid, lineHeight: 1.7, marginBottom: 16 }}>
+                Tu recevras un email dès que l'application sera prête à être utilisée.
+              </p>
+              <p style={{ fontFamily: sans, fontSize: 14, color: T.textLight, lineHeight: 1.7, marginBottom: 12 }}>
+                Pour toute question, contacte-nous sur WhatsApp&nbsp;:
+              </p>
+              <a href="https://wa.me/33689361268" target="_blank" rel="noopener" style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
-                background: T.text, color: "#fff", fontFamily: sans, fontWeight: 600, fontSize: 13,
-                padding: "12px 22px", borderRadius: 12, textDecoration: "none",
+                background: "#25D366", color: "#fff", fontFamily: sans, fontWeight: 600, fontSize: 14,
+                padding: "12px 24px", borderRadius: 12, textDecoration: "none",
               }}>
-                Partager sur X
-              </a>
-              <a href="https://wa.me/?text=Je%20viens%20de%20rejoindre%20Volora%20%E2%9C%88%EF%B8%8F%20L%27IA%20qui%20trouve%20les%20vols%20pas%20chers%20avant%20tout%20le%20monde%20%F0%9F%94%A5" target="_blank" rel="noopener" className="merci-share" style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                background: "#25D366", color: "#fff", fontFamily: sans, fontWeight: 600, fontSize: 13,
-                padding: "12px 22px", borderRadius: 12, textDecoration: "none",
-              }}>
-                Partager sur WhatsApp
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                +33 6 89 36 12 68
               </a>
             </div>
           </div>
