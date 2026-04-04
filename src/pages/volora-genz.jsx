@@ -627,11 +627,58 @@ function Pricing() {
             ))}
           </div>
 
-          {/* CTA */}
-          <Btn large href="#" style={{ width: "100%", borderRadius: 14 }}>
-            Rejoindre les Fondateurs — 5€
-            <ArrowRight size={16} strokeWidth={2.5} />
-          </Btn>
+          {/* CTA — Tally + Stripe gérés par script dans index.html */}
+          <form
+            style={{
+              display: "block", width: "100%", margin: 0, textAlign: "left",
+            }}
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="vous@email.com"
+              required
+              autoComplete="email"
+              style={{
+                width: "100%",
+                boxSizing: "border-box",
+                padding: "14px 16px",
+                marginBottom: 12,
+                borderRadius: 14,
+                border: `1px solid ${T.border}`,
+                fontFamily: sans,
+                fontSize: 15,
+                color: T.text,
+                background: T.white,
+                outline: "none",
+              }}
+            />
+            <button
+              type="submit"
+              className="cta-main"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+                width: "100%",
+                background: T.coral,
+                color: "#fff",
+                fontFamily: sans,
+                fontWeight: 600,
+                fontSize: 16,
+                letterSpacing: ".01em",
+                padding: "15px 34px",
+                borderRadius: 14,
+                border: "none",
+                cursor: "pointer",
+                animation: "pulse 2.5s ease-in-out infinite",
+              }}
+            >
+              Rejoindre les Fondateurs — 5€
+              <ArrowRight size={16} strokeWidth={2.5} />
+            </button>
+          </form>
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 5, marginTop: 14 }}>
             <Shield size={11} color={T.textMuted} />
