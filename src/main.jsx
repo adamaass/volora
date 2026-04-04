@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import VoloraGenZ from "./pages/volora-genz.jsx";
+import Merci from "./pages/Merci.jsx";
 
 if (!document.querySelector("style[data-volora-reset]")) {
   const reset = document.createElement("style");
@@ -9,8 +10,11 @@ if (!document.querySelector("style[data-volora-reset]")) {
   document.head.appendChild(reset);
 }
 
+const path = window.location.pathname;
+const Page = path === "/merci" ? Merci : VoloraGenZ;
+
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <VoloraGenZ />
+    <Page />
   </React.StrictMode>,
 );
