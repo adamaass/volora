@@ -331,7 +331,7 @@ function Hero() {
         {/* CTA */}
         <div className="fade-up" style={{ animationDelay: ".22s" }}>
           <Btn large>
-            Profiter de l'offre — 5€
+            Profiter de l'offre — 4,99€
             <ArrowRight size={16} strokeWidth={2.5} />
           </Btn>
         </div>
@@ -622,7 +622,7 @@ function Pricing() {
           {/* Price */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 6 }}>
             <span style={{ fontFamily: sans, fontSize: 16, color: T.textMuted, textDecoration: "line-through", fontWeight: 500 }}>49€/an</span>
-            <span style={{ fontFamily: serif, fontWeight: 400, fontSize: 64, color: T.text, lineHeight: 1, letterSpacing: "-.03em" }}>5€</span>
+            <span style={{ fontFamily: serif, fontWeight: 400, fontSize: 64, color: T.text, lineHeight: 1, letterSpacing: "-.03em" }}>4,99€</span>
           </div>
           <p style={{ fontFamily: sans, fontSize: 13, color: T.textLight, marginBottom: 28 }}>
             Paiement unique · Accès à vie
@@ -692,7 +692,7 @@ function Pricing() {
             >
               {loading ? "Redirection..." : (
                 <>
-                  Rejoindre les Fondateurs — 5€
+                  Rejoindre les Fondateurs — 4,99€
                   <ArrowRight size={16} strokeWidth={2.5} />
                 </>
               )}
@@ -719,8 +719,8 @@ function FAQ() {
   const items = [
     { q: "Comment l'IA détecte-t-elle les deals ?", a: "Notre IA propriétaire surveille en temps réel les tarifs de 500+ compagnies aériennes. Elle identifie les erreurs de prix et les promos non relayées en quelques millisecondes. Vous recevez l'alerte avant que le prix soit corrigé." },
     { q: "Combien d'emails vais-je recevoir ?", a: "En moyenne 3 à 5 par semaine, uniquement quand un deal en vaut vraiment la peine. Chaque alerte est vérifiée par notre équipe. Zéro spam — promis. 🤞" },
-    { q: "Le paiement de 5€ est-il sécurisé ?", a: "100%. Le paiement est traité par Stripe (le même que Spotify, Amazon…). Vos données bancaires ne passent jamais par nos serveurs. Remboursement sans condition dans les 30 jours." },
-    { q: "Pourquoi 5€ et pas plus ?", a: "On lance Volora et on cherche nos 200 premiers ambassadeurs. Le tarif passera à 49€/an ensuite. En rejoignant maintenant, vous verrouillez le prix fondateur de 5€ à vie. Deal ? 🤝" },
+    { q: "Le paiement de 4,99€ est-il sécurisé ?", a: "100%. Le paiement est traité par Stripe (le même que Spotify, Amazon…). Vos données bancaires ne passent jamais par nos serveurs. Remboursement sans condition dans les 30 jours." },
+    { q: "Pourquoi 4,99€ et pas plus ?", a: "On lance Volora et on cherche nos 200 premiers ambassadeurs. Le tarif passera à 49€/an ensuite. En rejoignant maintenant, vous verrouillez le prix fondateur de 4,99€ à vie. Deal ? 🤝" },
     { q: "Puis-je choisir mes aéroports ?", a: "Oui ! Dès l'inscription. Paris, Lyon, Marseille, Toulouse, Nantes, Nice, Bordeaux… Vous ne recevez que les deals qui partent de chez vous." },
   ];
   return (
@@ -797,7 +797,7 @@ function FinalCTA() {
           Rejoignez les fondateurs et laissez l'IA bosser pour vous.
         </p>
         <Btn large href="#pricing">
-          Profiter de l'offre — 5€
+          Profiter de l'offre — 4,99€
           <ArrowRight size={16} strokeWidth={2.5} />
         </Btn>
       </div>
