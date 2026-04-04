@@ -5,6 +5,7 @@ import {
   Heart, BrainCircuit, Radar,
   Lock, Send,
 } from "lucide-react";
+import { sendToTallyAndRedirect } from "../utils/tally.js";
 
 /* ═══════════════════════════════════════════
    FONTS
@@ -568,6 +569,8 @@ function DealShowcase() {
    ═══════════════════════════════════════════ */
 function Pricing() {
   const [ref, vis] = useInView();
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
   const features = [
     { emoji: "📬", text: "Tous les deals premium par email" },
     { emoji: "⚡", text: "Alertes erreurs de prix en temps réel" },
@@ -576,6 +579,14 @@ function Pricing() {
     { emoji: "🔒", text: "Tarif fondateur verrouillé à vie" },
     { emoji: "💸", text: "Satisfait ou remboursé, sans condition" },
   ];
+
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setLoading(true);
+    await sendToTallyAndRedirect(email.trim());
+  };
+
   return (
     <section ref={ref} id="pricing" style={{ background: T.bg, padding: "72px 24px" }}>
       <div style={{ maxWidth: 440, margin: "0 auto", textAlign: "center" }}>
@@ -627,8 +638,8 @@ function Pricing() {
             ))}
           </div>
 
-          {/* CTA — Tally + Stripe gérés par script dans index.html */}
           <form
+            onSubmit={handleEmailSubmit}
             style={{
               display: "block", width: "100%", margin: 0, textAlign: "left",
             }}
@@ -636,6 +647,8 @@ function Pricing() {
             <input
               type="email"
               name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="vous@email.com"
               required
               autoComplete="email"
@@ -655,6 +668,7 @@ function Pricing() {
             />
             <button
               type="submit"
+              disabled={loading}
               className="cta-main"
               style={{
                 display: "inline-flex",
@@ -671,12 +685,17 @@ function Pricing() {
                 padding: "15px 34px",
                 borderRadius: 14,
                 border: "none",
-                cursor: "pointer",
+                cursor: loading ? "wait" : "pointer",
                 animation: "pulse 2.5s ease-in-out infinite",
+                opacity: loading ? 0.7 : 1,
               }}
             >
-              Rejoindre les Fondateurs — 5€
-              <ArrowRight size={16} strokeWidth={2.5} />
+              {loading ? "Redirection..." : (
+                <>
+                  Rejoindre les Fondateurs — 5€
+                  <ArrowRight size={16} strokeWidth={2.5} />
+                </>
+              )}
             </button>
           </form>
 
