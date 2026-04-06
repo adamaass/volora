@@ -584,6 +584,27 @@ function Pricing() {
     e.preventDefault();
     if (!email.trim()) return;
     setLoading(true);
+
+    if (window.ttq) {
+      if (email.trim()) {
+        const buf = await crypto.subtle.digest('SHA-256',
+          new TextEncoder().encode(email.trim().toLowerCase()));
+        const hashed = Array.from(new Uint8Array(buf))
+          .map(b => b.toString(16).padStart(2, '0')).join('');
+        window.ttq.identify({ email: hashed });
+      }
+      window.ttq.track('InitiateCheckout', {
+        contents: [{
+          content_id: "volora_fondateur",
+          content_type: "product",
+          content_name: "Volora Accès Fondateur"
+        }],
+        value: 5,
+        currency: "EUR"
+      });
+    }
+
+    await new Promise(r => setTimeout(r, 300));
     await sendToTallyAndRedirect(email.trim());
   };
 
@@ -838,6 +859,20 @@ function Footer() {
    APP
    ═══════════════════════════════════════════ */
 export default function VoloraGenZ() {
+  useEffect(() => {
+    if (window.ttq) {
+      window.ttq.track('ViewContent', {
+        contents: [{
+          content_id: "volora_fondateur",
+          content_type: "product",
+          content_name: "Volora Accès Fondateur"
+        }],
+        value: 5,
+        currency: "EUR"
+      });
+    }
+  }, []);
+
   return (
     <div style={{ fontFamily: sans, background: T.bg, minHeight: "100vh", overflowX: "hidden" }}>
       <Navbar />

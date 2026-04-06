@@ -55,9 +55,26 @@ const sans = "'General Sans', system-ui, -apple-system, sans-serif";
 export default function Merci() {
   useEffect(() => {
     document.title = "Bienvenue chez Volora — Confirmation";
-    // TODO: META PIXEL - Purchase Event
-    // TODO: TIKTOK PIXEL - Purchase Event
-    // TODO: STRIPE PURCHASE CONVERSION
+    if (window.ttq) {
+      window.ttq.track('CompleteRegistration', {
+        contents: [{
+          content_id: "volora_fondateur",
+          content_type: "product",
+          content_name: "Volora Accès Fondateur"
+        }],
+        value: 5,
+        currency: "EUR"
+      });
+      window.ttq.track('Purchase', {
+        contents: [{
+          content_id: "volora_fondateur",
+          content_type: "product",
+          content_name: "Volora Accès Fondateur"
+        }],
+        value: 5,
+        currency: "EUR"
+      });
+    }
   }, []);
 
   return (
